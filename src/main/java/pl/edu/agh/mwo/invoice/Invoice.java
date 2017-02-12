@@ -1,10 +1,14 @@
 package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
+	
+	public HashMap <Product, Integer> productList;
+	
 	public void addProduct(Product product) {
 		// TODO: implement
 	}
@@ -14,6 +18,7 @@ public class Invoice {
 	}
 
 	public BigDecimal getSubtotal() {
+		
 		return null;
 	}
 
