@@ -17,7 +17,13 @@ public class Invoice {
 	}
 	
 	public void addProduct(Product product) {
-		addProduct(product, 1);
+		int n;
+		if (products.containsKey(product)) {
+			n += 1;//pobrac jego ilossc i do niej dodac ta ilosc, ktora dodajemy
+			addProduct(product, n);
+		}
+		else
+			addProduct(product, 1);
 	}
 
 	public void addProduct(Product product, Integer quantity) {
@@ -52,5 +58,17 @@ public class Invoice {
 	public Integer getNumber() {
 		// TODO Auto-generated method stub
 		return number;
+	}
+
+	public String printedVersion() {
+		// TODO Auto-generated method stub
+		String printed = String.valueOf(number);
+		for (Product product : products.keySet()) {
+			printed += "\n" + product.getName();
+			printed += ", " + product.getClass().getName();
+			printed += ", " + products.get(product);
+		}
+		printed += "\n" + "LICZBA PRODUKTOW: " + products.size();
+		return printed;
 	}
 }

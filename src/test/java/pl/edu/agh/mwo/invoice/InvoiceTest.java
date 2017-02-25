@@ -113,7 +113,23 @@ public class InvoiceTest {
 		Invoice invoice2 = createEmptyInvoice();
 		Assert.assertNotEquals(invoice.getNumber(), invoice2.getNumber());
 	}
+	
+	@Test
+	public void testPrintedInvoiceHasNumber() {
+		Invoice invoice = createEmptyInvoice();
+		int number = invoice.getNumber();
+		String printedInvoice = invoice.printedVersion();
+		Assert.assertThat(printedInvoice,  Matchers.containsString(String.valueOf(number)));
+	}
 	 
+	@Test
+	public void testPrintedInvoiceHasProductName() {
+		Invoice invoice = createEmptyInvoice();
+		int number = invoice.getNumber();
+		String printedInvoice = invoice.printedVersion();
+		Assert.assertThat(printedInvoice,  Matchers.containsString(String.valueOf(number)));
+	}
+	
 	private Invoice createEmptyInvoice() {
 		return new Invoice();
 	}
