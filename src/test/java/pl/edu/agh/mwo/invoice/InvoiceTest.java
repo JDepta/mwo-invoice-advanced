@@ -122,13 +122,6 @@ public class InvoiceTest {
 		Assert.assertThat(printedInvoice,  Matchers.containsString(String.valueOf(number)));
 	}
 	 
-	@Test
-	public void testPrintedInvoiceHasProductName() {
-		Invoice invoice = createEmptyInvoice();
-		int number = invoice.getNumber();
-		String printedInvoice = invoice.printedVersion();
-		Assert.assertThat(printedInvoice,  Matchers.containsString(String.valueOf(number)));
-	}
 	
 	private Invoice createEmptyInvoice() {
 		return new Invoice();
