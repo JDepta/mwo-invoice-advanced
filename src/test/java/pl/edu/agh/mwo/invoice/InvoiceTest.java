@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
 
 import pl.edu.agh.mwo.invoice.Invoice;
@@ -99,6 +101,19 @@ public class InvoiceTest {
 		invoice.addProduct(createTaxFreeProduct(), -1);
 	}
 
+	@Test
+	public void testInvoiceHasNumberGreatedThanZero() {
+		Invoice invoice = createEmptyInvoice();
+		Assert.assertThat(invoice.getNumber(), Matchers.greaterThan(0));
+	}
+	
+	@Test
+	public void testTwoInvoicesHasDifferentNumber() {
+		Invoice invoice = createEmptyInvoice();
+		Invoice invoice2 = createEmptyInvoice();
+		Assert.assertNotEquals(invoice.getNumber(), invoice2.getNumber());
+	}
+	 
 	private Invoice createEmptyInvoice() {
 		return new Invoice();
 	}
